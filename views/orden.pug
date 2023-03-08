@@ -3,9 +3,17 @@ extends layout
 block contenido 
     .contenido-principal 
             h1 #{nombrePagina}
+            nav.nav-detalles 
+                .div-1.seleccionado.enmarcado
+                    a(href="#" class="opcion-detalles") Detalles
+                .div-2
+                    a(href="#" class="opcion-mapa") Mapa
 
-            
+            .mapa
+                iframe(src='https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d15897.824565324816!2d-75.44611414999999!3d5.0295245!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1ses!2sco!4v1678296189986!5m2!1ses!2sco' width='800' height='600' style='border:0;' allowfullscreen='' loading='lazy' referrerpolicy='no-referrer-when-downgrade')
+
             .principal 
+                
                 .detalles 
                     h1 Información orden
                     .info 
@@ -23,7 +31,13 @@ block contenido
                         p Nombre: #{orden.repartidore.nombre}
                         p Telefono: #{orden.repartidore.telefono}
                         p Cédula: #{orden.repartidore.cedula}
+                        h2 Productos
+                            each producto in Object.keys(orden.productos)
+                                p Nombre: #{orden.productos[producto].nombreProducto}
+                                p Precio:   #{orden.productos[producto].precioProducto}
+                                p Tarifa:   #{orden.productos[producto].tarifaProducto}
+                                p Tipo pago:    #{orden.productos[producto].tipoPago}
+                                p Descripción   #{orden.productos[producto].descripcion}
 
 
-                .historial Historial
-                .mapa Mapa
+                .historial 

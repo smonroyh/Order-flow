@@ -16,7 +16,17 @@
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modulos_orden__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modulos/orden */ \"./public/js/modulos/orden.js\");\n/* harmony import */ var _modulos_orden__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_modulos_orden__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _modulos_estados__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modulos/estados */ \"./public/js/modulos/estados.js\");\n\n\n\n//# sourceURL=webpack://order-flow/./public/js/app.js?");
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony import */ var _modulos_orden__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modulos/orden */ \"./public/js/modulos/orden.js\");\n/* harmony import */ var _modulos_orden__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_modulos_orden__WEBPACK_IMPORTED_MODULE_0__);\n/* harmony import */ var _modulos_estados__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modulos/estados */ \"./public/js/modulos/estados.js\");\n/* harmony import */ var _modulos_detalles__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modulos/detalles */ \"./public/js/modulos/detalles.js\");\n/* harmony import */ var _modulos_detalles__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_modulos_detalles__WEBPACK_IMPORTED_MODULE_2__);\n\n\n\n\n//# sourceURL=webpack://order-flow/./public/js/app.js?");
+
+/***/ }),
+
+/***/ "./public/js/modulos/detalles.js":
+/*!***************************************!*\
+  !*** ./public/js/modulos/detalles.js ***!
+  \***************************************/
+/***/ (() => {
+
+eval("const nav = document.querySelector('.nav-detalles ');\nif (nav) {\n  nav.addEventListener('click', e => {\n    if (e.target.classList.contains('opcion-detalles') || e.target.classList.contains('opcion-mapa')) {\n      const padreOpcion = e.target.parentElement;\n      const mapa = document.querySelector('.mapa');\n      const principal = document.querySelector('.principal');\n      if (e.target.classList.contains('opcion-detalles')) {\n        mapa.style.display = \"none\";\n        principal.style.display = \"grid\";\n      } else if (e.target.classList.contains('opcion-mapa')) {\n        principal.style.display = \"none\";\n        mapa.style.display = \"flex\";\n      }\n      // let principal;\n\n      [...padreOpcion.parentElement.children].forEach(hijo => {\n        if (hijo.classList.contains('seleccionado')) {\n          hijo.classList.remove('seleccionado', 'enmarcado');\n          // principal=document.querySelector('.principal')\n        }\n      });\n      // console.log(principal)\n      padreOpcion.classList.add('seleccionado', 'enmarcado');\n    }\n  });\n}\n\n//# sourceURL=webpack://order-flow/./public/js/modulos/detalles.js?");
 
 /***/ }),
 

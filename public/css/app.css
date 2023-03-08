@@ -464,7 +464,44 @@ li .masDetalles{
 .principal{
     display: grid;
 
-    grid-template-areas: "detalles historial mapa";
+    grid-template-areas: "detalles historial";
 
-    grid-template-columns: repeat(3,1fr);
+    grid-template-columns: repeat(2,1fr);
+}
+
+.nav-detalles {
+    display: flex;
+    justify-content: center;
+    height: 3rem;
+    align-items: center;
+    border-bottom:2px solid #005485;
+    
+}
+
+.nav-detalles div{
+    padding: 0.7rem 8rem 0 8rem;
+    text-align: center; 
+}
+
+.nav-detalles .enmarcado{
+    border-top: 2px solid #005485;
+    border-left: 2px solid #005485;
+    border-right: 2px solid #005485;
+
+}
+
+.nav-detalles div a{
+    text-decoration: none;
+    font-size: 30px;
+    color: #000;
+    font-weight:600;
+}
+
+.seleccionado{
+    border-bottom: 1px solid white;
+}
+
+.mapa{
+    display:none;
+    justify-content:  center;
 }

@@ -179,9 +179,9 @@ const verOrden=async(req,res)=>{
             model:Repartidores
         }
     ]})
-    console.log(orden)
+    console.log(orden.productos['producto-2'].nombreProducto)
     res.render('orden',{
-        nombrePagina:"Orden",
+        nombrePagina:"Detalles orden",
         orden
     })
 }
