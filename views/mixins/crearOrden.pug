@@ -1,0 +1,63 @@
+mixin crearOrden(orden={})
+
+
+    form.agregar-proyecto(action=`/nueva-orden/${orden.id ? orden.id : ""}`,method="POST")
+        fieldset 
+            legend Orden 
+            fieldset 
+                legend Cliente
+                .campo
+                    label(for="nomCliente") Nombre Cliente:
+                    input( type="text" id="nomCliente" name="nombreCliente" placeholder="Nombre Cliente")
+                .campo
+                    label(for="cedCliente") Cedula Cliente:
+                    input( type="text" id="cedCliente" name="cedulaCliente" placeholder="Cedula Cliente")
+                .campo
+                    label(for="telCliente") Telefono Cliente:
+                    input( type="text" id="telCliente" name="telefonoCliente" placeholder="Telefono Cliente")
+                .campo
+                    label(for="dirCliente") Dirección Cliente:
+                    input( type="text" id="dirCliente" name="direccionCliente" placeholder="Dirección Cliente")
+    
+            fieldset 
+                legend Proveedor
+                .campo
+                    label(for="nomProveedor") Nombre Proveedor:
+                    input( type="text" id="nomProveedor" name="nombreProveedor" placeholder="Nombre Proveedor")
+                .campo
+                    label(for="telProveedor") Telefono Proveedor:
+                    input( type="text" id="telProveedor" name="telefonoProveedor" placeholder="Telefono Proveedor")
+            fieldset.amplitud
+                legend.red Repartidor
+                .campo
+                    label(for="cedRepartidor") Cedula Repartidor:
+                    input( type="text" id="cedRepartidor" name="cedulaRepartidor" placeholder="Cedula Repartidor")
+            fieldset.amplitud
+                legend Producto
+                .campo
+                    label(for="nombre") Nombre Producto:
+                    input( type="text" id="nombre" name="nombreProducto" placeholder="Nombre Producto")
+                .campo
+                    label(for="precio") Precio Producto:
+                    input( type="text" id="precio" name="precioProducto" placeholder="Precio Producto")
+                .campo
+                    label(for="tarifa") Tarifa Producto:
+                    input( type="text" id="tarifa" name="tarifaProducto" placeholder="Tarifa Producto")
+                .campo
+                    label(for="descripcion") Descripción Producto:
+                    textarea(id="descripcion" name="descripcion", cols="75", rows="5") 
+
+                .campo 
+                    label(for="tipoPago") Tipo Pago:
+                    select(name="tipoPago" id="tipoPago")
+                        option(value="" selected disabled) -Seleccione- 
+                        option(value=1) Pago
+                        option(value=2) No pago
+
+                .agregar-producto 
+                    i.fas.fa-trash   Eliminar producto
+        .agregar-producto 
+            i.fa-solid.fa-plus Agregar producto
+        .campo.enviar 
+            input(type="submit" value=`${orden.id ? 'Editar' :  'Guardar'}` class="boton")    
+            

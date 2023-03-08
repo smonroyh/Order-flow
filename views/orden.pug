@@ -1,0 +1,29 @@
+extends layout 
+
+block contenido 
+    .contenido-principal 
+            h1 #{nombrePagina}
+
+            
+            .principal 
+                .detalles 
+                    h1 Información orden
+                    .info 
+
+                        p Fecha: #{orden.fecha}
+                        h2 Proveedor
+                        p Nombre: #{orden.proveedore.nombre}
+                        p Telefono: #{orden.proveedore.telefono}
+                        h2 Cliente
+                        p Nombre: #{orden.cliente.nombre}
+                        p Telefono: #{orden.cliente.telefono}
+                        p Cédula: #{orden.cliente.cedula}
+                        p Dirección: #{orden.cliente.direccion}
+                        h2 Repartidor 
+                        p Nombre: #{orden.repartidore.nombre}
+                        p Telefono: #{orden.repartidore.telefono}
+                        p Cédula: #{orden.repartidore.cedula}
+
+
+                .historial Historial
+                .mapa Mapa

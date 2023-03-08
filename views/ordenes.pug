@@ -1,0 +1,65 @@
+extends layout 
+
+block contenido
+
+    .contenido-principal 
+            h1 #{nombrePagina}
+
+            
+            .listado-pendientes 
+                if ordenes
+                    ul 
+                        li 
+                            p ID ORDEN
+                            p REPARTIDOR
+                            p CLIENTE
+                            p PROVEEDOR
+                            p ESTADO
+                            p ACCIONES
+                            p 
+                    
+                        each orden in ordenes 
+                            li.tarea(data-orden=orden.id)
+                                p #{orden.id}
+                                p #{orden.repartidoreCedula}
+                                p #{orden.clienteCedula}
+                                p #{orden.proveedore.nombre}
+                                if orden.ultimoEstadoOrden.estadoId==1
+                                    p.parrafoEstado TERMINADO
+                                if orden.ultimoEstadoOrden.estadoId==2
+                                    p.parrafoEstado CANCELADO
+                                if orden.ultimoEstadoOrden.estadoId==3
+                                    p.parrafoEstado PAUSADO
+                                if orden.ultimoEstadoOrden.estadoId==4
+                                    p.parrafoEstado EN PROCESO
+                                .acciones 
+                                    if orden.ultimoEstadoOrden.estadoId==1
+                                        i.fa-solid.fa-flag-checkered.boton.azul(data-estado=1)
+                                        i.fa-solid.fa-ban.boton(data-estado=2)
+                                        i.fa-solid.fa-stop.boton(data-estado=3) 
+                                        i.fa-solid.fa-person-skating.boton(data-estado=4)
+                                    if orden.ultimoEstadoOrden.estadoId==2    
+                                        i.fa-solid.fa-flag-checkered.boton(data-estado=1)
+                                        i.fa-solid.fa-ban.boton.azul(data-estado=2)
+                                        i.fa-solid.fa-stop.boton(data-estado=3) 
+                                        i.fa-solid.fa-person-skating.boton(data-estado=4)
+                                    if orden.ultimoEstadoOrden.estadoId==3
+                                        i.fa-solid.fa-flag-checkered.boton(data-estado=1)
+                                        i.fa-solid.fa-ban.boton(data-estado=2)
+                                        i.fa-solid.fa-stop.boton.azul(data-estado=3) 
+                                        i.fa-solid.fa-person-skating.boton(data-estado=4)    
+                                    if orden.ultimoEstadoOrden.estadoId==4      
+                                        i.fa-solid.fa-flag-checkered.boton(data-estado=1)
+                                        i.fa-solid.fa-ban.boton(data-estado=2)
+                                        i.fa-solid.fa-stop.boton(data-estado=3) 
+                                        i.fa-solid.fa-person-skating.boton.azul(data-estado=4)
+
+                                .masDetalles
+                                    a(href=`/ver-orden/${orden.id}`)  
+                                        i.fa-solid.fa-plus Detalles
+                                    
+                else 
+                    p No hay tareas
+
+
+            

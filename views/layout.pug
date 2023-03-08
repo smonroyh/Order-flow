@@ -1,0 +1,37 @@
+doctype html
+html(lang="en")
+    head
+        include partials/header
+    body 
+        header.barra
+            h1 Order-flow
+            a(href="/cerrar-sesion") Cerrar sesión
+        
+        main.contenedor 
+            aside.contenedor-proyectos
+                .panel 
+                    p Menu
+                .panel.crear-proyecto
+                    a(href="/nueva-orden" class="boton") Nueva orden
+                        span 
+                             i.fa-solid.fa-plus
+
+                .panel.crear-proyecto
+                    a(href="/ver-ordenes" class="boton") Ver ordenes
+                        span 
+                            i.fa-solid.fa-eye
+
+
+            //- .panel.lista-proyectos
+            //-         h2 Ordenes
+            //-         ul#proyectos.proyectos
+            //-             if proyectos
+            //-                 each proyecto in proyectos
+            //-                     li 
+                            
+            //-                         a(href=`/proyectos/${proyecto.url}`) #{proyecto.nombre} 
+            block contenido
+        
+        script(src='https://kit.fontawesome.com/d8b9213a66.js' crossorigin='anonymous')
+        script(src="../dist/bundle.js") 
+        
