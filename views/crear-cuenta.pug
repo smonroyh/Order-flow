@@ -1,0 +1,47 @@
+html(lang="en")
+    head
+        include partials/header
+    body.login
+        .contenedor-formulario.form-crear-principal
+
+            
+            form#formulario.caja.caja-login.form-crear(action="/crear-cuenta" method="POST") 
+                h1 #{nombrePagina}
+                .campo
+                    label(for="nombre") Tu nombre 
+                    input(type="text" name="nombre" placeholder="Nombres y apellidos" value= nombre)           
+                .campo
+                    label(for="cedula") Cedula
+                    input(type="text" name="cedula" placeholder="Tu cedula" value= cedula)
+                    if mensajes['PRIMARY-error']
+                        .alertas(class=`PRIMARY-error`)
+                            p=`! Cedula ya existente`
+                    if mensajes['cedula-error']
+                        .alertas(class=`cedula-error`)
+                            p=`! ${mensajes['cedula-error']}`
+                .campo
+                    label(for="telefono") Telefono
+                    input(type="text" name="telefono" placeholder="Tu telefono" value= telefono)
+                .campo
+                    label(for="email") E-mail
+                    input(type="email" name="email" placeholder="Tu E-mail" value= email)
+
+                    if mensajes['email-error']
+                        .alertas(class=`email-error`)
+                            p=`! ${mensajes['email-error']}`
+                .campo
+                    label(for="password") Password
+                    input(type="password" name="password" placeholder="Tu password" value= password)
+                    if mensajes['password-error']
+                        .alertas(class=`password-error`)
+                            p=`! ${mensajes['password-error']}`
+
+
+                .campo.enviar 
+                    input.boton(type="submit", value="Crear cuenta")
+                .campo ¿Ya tienes cuenta?  
+                    
+                    a(href="/iniciar-sesion")   Iniciar sesión   
+
+
+        script(src="dist/bundle.js")  

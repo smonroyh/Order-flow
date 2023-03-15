@@ -11,7 +11,7 @@ body {
 /** Login **/
 .login,
 .crear-cuenta {
-    background: #455A64;
+    background: #005485;
 }
 .contenedor-formulario {
     display: flex;
@@ -62,7 +62,7 @@ body {
     flex: 1;
     border: 1px solid #455A64;
     border-radius: 5rem;
-    padding-left: 2rem;
+    padding-left: .5rem;
     color: black;
 }
 .campo.acciones {
@@ -255,6 +255,21 @@ body.index {
 
 .completo {
     color: #00B762;
+}
+
+.alertas{
+    padding: .5rem;
+    font-weight: 900;
+    max-width: 300px;
+    margin: 0 auto -1rem auto;
+    text-transform: uppercase;
+}
+.alertas p{
+    font-weight: 200;
+    color: #c40000;
+    text-transform: capitalize;
+    margin: 0;
+    font-size: .9rem;
 }
 .alerta {
     padding: .5rem;
@@ -467,6 +482,7 @@ li .masDetalles{
     grid-template-areas: "detalles historial";
 
     grid-template-columns: repeat(2,1fr);
+    column-gap: 20px;
 }
 
 .nav-detalles {
@@ -504,4 +520,99 @@ li .masDetalles{
 .mapa{
     display:none;
     justify-content:  center;
+}
+
+.contenedor-historial{
+    display: flex;
+    justify-content: center;
+}
+
+scroll-container {
+    display: block;
+    width: 35rem;
+    height: 30rem;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+    border: 2px solid #000;
+}
+scroll-page {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    height: 15%;
+    font-size: 1.5rem;
+}
+
+scroll-page span{
+    color: red;
+    font-size: 1.5rem;
+}
+
+.form-crear{
+    width: 31.2rem;
+    /* height: 53.8rem; */
+    padding: 1.4rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+}
+
+.form-crear-principal{
+    height: 50rem;
+}
+.form-crear .campo{
+    display: flex;
+    flex-direction: column;
+    /* width: 100%; */
+    align-items: start;
+    margin: .7rem 1rem ;
+}
+.form-crear .campo:nth-child(8){
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+}
+.form-crear .campo:nth-child(8) a{
+    margin-left: .8rem;
+    color: #0066c0;
+}
+.form-crear .campo label{
+    flex-basis: 0px;
+    font-weight: 700;
+    margin: .3rem 0;
+}
+
+.form-crear .campo input{
+
+    width: 100%;
+    border-radius: 0rem !important;
+    text-align: start;
+    /* display: block; */
+    flex-basis: 2.5rem;
+    flex-shrink: 0;
+}
+
+
+.form-crear h1{
+    color: #000;
+    font-weight: 200;
+    margin-bottom: 1rem;
+}
+
+.form-crear input[class="boton"]{
+    background-color: #68bcec;
+    font-weight: 200;
+    text-transform: capitalize;
+    text-align: center;
+
+    margin-bottom: 2rem;
+    border: .8px solid #035483 ;
+    /* transition: all .6s ease-out; */
+}
+
+.form-crear input[class="boton"]:hover{
+    background-color:#298ec9 ;
+}
+
+.form-crear .acciones a{
+    margin: .5rem 0;
 }

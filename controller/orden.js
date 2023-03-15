@@ -3,8 +3,8 @@ const Clientes = require("../models/cliente")
 const Estados = require("../models/estado")
 // const Estados_Ordenes = require("../models/estado_orden")
 const Ordenes = require("../models/orden")
-const Proveedores = require("../models/proveedor")
-const Repartidores = require("../models/repartidor")
+const Proveedores = require("../models/proveedor");
+const Usuarios = require('../models/usuario');
 
 const ordenes=(req,res)=>{
     res.render('layout',{
@@ -43,11 +43,7 @@ const crearOrden=async(req,res)=>{
     //Pero despues el repartidor creará una cuenta y se validara
     //que el repartidor exista para que se pueda crear una orden con un repartidor existente
     const {cedulaRepartidor}=req.body;
-    let repartidor=await Repartidores.findOne({where:{cedula:cedulaRepartidor}});
-
-    if(!repartidor){
-        repartidor=await Repartidores.create({cedula:cedulaRepartidor})
-    }
+    let repartidor=await Usuarios.findOne({where:{cedula:cedulaRepartidor}});
 
     //proveedor  ????
     const {nombreProveedor,telefonoProveedor}=req.body;
@@ -107,7 +103,7 @@ const crearOrden=async(req,res)=>{
         fecha:Date.now(),
         productos,
         proveedoreId:proveedor.id,
-        repartidoreCedula:repartidor.cedula,
+        usuarioCedula:repartidor.cedula,
         clienteCedula:cliente.cedula
     })
 
@@ -175,14 +171,21 @@ const verOrden=async(req,res)=>{
         {
             model:Clientes
         },
-        {
-            model:Repartidores
-        }
     ]})
-    console.log(orden.productos['producto-2'].nombreProducto)
+
+    const usuario=await Usuarios.findOne({where:{cedula:orden.usuarioCedula}})
+    console.log(usuario)
+
+    const ordenHistorial=await Ordenes.Estados_Ordenes.findAll({where:{ordeneId:id},
+    include:[
+        {model:Estados}
+    ]})
+    // console.log(ordenHistorial[0].estado)
+    // console.log(orden.productos['producto-2'].nombreProducto)
     res.render('orden',{
         nombrePagina:"Detalles orden",
-        orden
+        orden,
+        ordenHistorial,usuario
     })
 }
 

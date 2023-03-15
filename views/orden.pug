@@ -28,9 +28,9 @@ block contenido
                         p Cédula: #{orden.cliente.cedula}
                         p Dirección: #{orden.cliente.direccion}
                         h2 Repartidor 
-                        p Nombre: #{orden.repartidore.nombre}
-                        p Telefono: #{orden.repartidore.telefono}
-                        p Cédula: #{orden.repartidore.cedula}
+                        p Nombre: #{usuario.nombre}
+                        p Telefono: #{usuario.telefono}
+                        p Cédula: #{usuario.cedula}
                         h2 Productos
                             each producto in Object.keys(orden.productos)
                                 p Nombre: #{orden.productos[producto].nombreProducto}
@@ -41,3 +41,12 @@ block contenido
 
 
                 .historial 
+                    h2 Historial
+                    .contenedor-historial
+                        scroll-container
+                            each elemento in ordenHistorial 
+                                scroll-page #{elemento.estado.estado}
+                                    span #{elemento.createdAt.toLocaleString()}
+                            //- scroll-page 2
+                            //- scroll-page 3
+                            //- scroll-page 4

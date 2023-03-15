@@ -2,7 +2,6 @@ const db=require('../config/db');
 const sequelize=require('sequelize');
 const Estados = require('./estado');
 const Proveedores = require('./proveedor');
-const Repartidores = require('./repartidor');
 const Clientes = require('./cliente');
 const shortid = require('shortid');
 const Ordenes=db.define('ordenes',{
@@ -53,7 +52,7 @@ Estados_Ordenes.belongsTo(Estados);
 //Relación 1:M ordenes proveedores
 Ordenes.belongsTo(Proveedores)
 //Relación 1:M ordenes repartidores
-Ordenes.belongsTo(Repartidores)
+// Ordenes.belongsTo(Usuarios)
 //Relación 1:M ordenes clientes
 Ordenes.belongsTo(Clientes)
 

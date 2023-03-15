@@ -1,0 +1,25 @@
+html(lang="en")
+    head
+        include partials/header
+    body.login
+        .contenedor-formulario
+
+                     
+            form#formulario.caja.caja-login.form-crear(action="/iniciar-sesion" method="POST") 
+                h1 #{nombrePagina}
+                .campo
+                    .label(for="email") E-mail: 
+                    input(type="email" name="email" placeholder="Tu Email" value= email)
+                .campo
+                    .label(for="password") Password: 
+                    input(type="password" name="password" placeholder="Tu password" value= password)
+
+                .campo.enviar 
+                    input.boton(type="submit", value="Iniciar sesión")
+                .campo.acciones
+                    a(href="/crear-cuenta") ¿Aún no tienes cuenta? Crea una gratis  
+
+                    a(href="/reestablecer") ¿Olvidate tu contraseña?
+
+
+        script(src="dist/bundle.js")  
