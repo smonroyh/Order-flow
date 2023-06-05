@@ -20,8 +20,10 @@ block contenido
                     
                         each orden in ordenes 
                             li.tarea(data-orden=orden.id)
+                                a(href="#")
+                                    img.imgPDF(src="/img/2932728.png", alt="", srcset="") 
                                 p #{orden.id}
-                                p #{orden.repartidoreCedula}
+                                p #{orden.usuarioCedula}
                                 p #{orden.clienteCedula}
                                 p #{orden.proveedore.nombre}
                                 if orden.ultimoEstadoOrden.estadoId==1
@@ -34,22 +36,22 @@ block contenido
                                     p.parrafoEstado EN PROCESO
                                 .acciones 
                                     if orden.ultimoEstadoOrden.estadoId==1
-                                        i.fa-solid.fa-flag-checkered.boton.azul(data-estado=1)
+                                        i.fa-solid.fa-flag-checkered.boton.azul(data-estado=1 data-bs-toggle='modal' data-bs-target='#exampleModal')
                                         i.fa-solid.fa-ban.boton(data-estado=2)
                                         i.fa-solid.fa-stop.boton(data-estado=3) 
                                         i.fa-solid.fa-person-skating.boton(data-estado=4)
                                     if orden.ultimoEstadoOrden.estadoId==2    
-                                        i.fa-solid.fa-flag-checkered.boton(data-estado=1)
+                                        i.fa-solid.fa-flag-checkered.boton(data-estado=1 data-bs-toggle='modal' data-bs-target='#exampleModal')
                                         i.fa-solid.fa-ban.boton.azul(data-estado=2)
                                         i.fa-solid.fa-stop.boton(data-estado=3) 
                                         i.fa-solid.fa-person-skating.boton(data-estado=4)
                                     if orden.ultimoEstadoOrden.estadoId==3
-                                        i.fa-solid.fa-flag-checkered.boton(data-estado=1)
+                                        i.fa-solid.fa-flag-checkered.boton(data-estado=1 data-bs-toggle='modal' data-bs-target='#exampleModal')
                                         i.fa-solid.fa-ban.boton(data-estado=2)
                                         i.fa-solid.fa-stop.boton.azul(data-estado=3) 
                                         i.fa-solid.fa-person-skating.boton(data-estado=4)    
                                     if orden.ultimoEstadoOrden.estadoId==4      
-                                        i.fa-solid.fa-flag-checkered.boton(data-estado=1)
+                                        i.fa-solid.fa-flag-checkered.boton(data-estado=1 data-bs-toggle='modal' data-bs-target='#exampleModal')
                                         i.fa-solid.fa-ban.boton(data-estado=2)
                                         i.fa-solid.fa-stop.boton(data-estado=3) 
                                         i.fa-solid.fa-person-skating.boton.azul(data-estado=4)
@@ -57,6 +59,34 @@ block contenido
                                 .masDetalles
                                     a(href=`/ver-orden/${orden.id}`)  
                                         i.fa-solid.fa-plus Detalles
+
+                                #exampleModal.modal.fade(tabindex='-1' aria-labelledby='exampleModalLabel' aria-hidden='true')
+                                    .modal-dialog
+                                        .modal-content
+                                            .modal-header
+                                                h1#exampleModalLabel.modal-title.fs-5 PAGO
+                                                button.btn-close(type='button' data-bs-dismiss='modal' aria-label='Close')
+                                            .modal-body
+                                                .form-check
+                                                    input#flexRadioDefault1.form-check-input(type='radio' name='flexRadioDefault')
+                                                    label.form-check-label(for='flexRadioDefault1')
+                                                        | Efectivo
+                                                    input(type='text' name='efectivo' id="flexRadioDefault1" )
+                                                .form-check
+                                                    input#flexRadioDefault2.form-check-input(type='radio' name='flexRadioDefault' checked='')
+                                                    label.form-check-label(for='flexRadioDefault2')
+                                                        | Pago en linea
+                                                
+                                                .opciones_pago
+                                                    span
+                                                        a(href="https://www.paypal.com/signin" target="_blank") 
+                                                            img.pse(src="/img/galeria188929.png", alt="", srcset="") 
+                                                    
+                                            .modal-footer
+                                                //- button.btn.btn-secondary(type='button' data-bs-dismiss='modal') Close
+                                                button.btn.btn-primary(type='button' data-bs-dismiss='modal') Close
+
+
                                     
                 else 
                     p No hay tareas

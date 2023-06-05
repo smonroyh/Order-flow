@@ -19,19 +19,31 @@ block contenido
                     .info 
 
                         p Fecha: #{orden.fecha}
-                        h2 Proveedor
-                        p Nombre: #{orden.proveedore.nombre}
-                        p Telefono: #{orden.proveedore.telefono}
-                        h2 Cliente
-                        p Nombre: #{orden.cliente.nombre}
-                        p Telefono: #{orden.cliente.telefono}
-                        p Cédula: #{orden.cliente.cedula}
-                        p Dirección: #{orden.cliente.direccion}
-                        h2 Repartidor 
-                        p Nombre: #{usuario.nombre}
-                        p Telefono: #{usuario.telefono}
-                        p Cédula: #{usuario.cedula}
-                        h2 Productos
+
+
+                        .proveedor
+                            h2 Proveedor
+                            p Nombre: #{orden.proveedore.nombre}
+                            p Telefono: #{orden.proveedore.telefono}
+                            
+                        .cliente
+                            h2 Cliente
+                            p Nombre: #{orden.cliente.nombre}
+                            p Telefono: #{orden.cliente.telefono}
+                            p Cédula: #{orden.cliente.cedula}
+                            p Dirección: #{orden.cliente.direccion}
+
+                            a(href=`tel:+${usuario.telefono}`)
+                                img.llamada(src="/img/llamada.png", alt="", srcset="")
+
+                        .repartidor
+                            h2 Repartidor 
+                            p Nombre: #{usuario.nombre}
+                            p Telefono: #{usuario.telefono}
+                            p Cédula: #{usuario.cedula}
+
+                        .productos
+                            h2 Productos
                             each producto in Object.keys(orden.productos)
                                 p Nombre: #{orden.productos[producto].nombreProducto}
                                 p Precio:   #{orden.productos[producto].precioProducto}

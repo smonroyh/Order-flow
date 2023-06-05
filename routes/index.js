@@ -23,7 +23,7 @@ router.post('/crear-cuenta',crearCuenta)
 
 router.get('/iniciar-sesion',formIniciarSesion)
 router.post('/iniciar-sesion',autenticarUsuario,(req,res)=>{
-    res.render('layout')
+    return res.redirect('/ver-ordenes')
 })
 
 //cerrar sesión

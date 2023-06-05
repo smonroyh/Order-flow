@@ -120,13 +120,27 @@ const crearOrden=async(req,res)=>{
 }
 
 const verOrdenes=async(req,res)=>{
-    const [ultimoEstadoOrden,ord]=await Promise.all([Ordenes.Estados_Ordenes.findAll({
-        attributes: [
-          'ordeneId',
-          [sequelize.fn('MAX', sequelize.col('createdAt')), 'lastStateChange'],
-        ],
-        group: ['ordeneId'],
-      }), Ordenes.Ordenes.findAll({include:[{model:Proveedores}]})]);
+    let ord;
+    if(res.locals.user.rol=="Administrador"){
+        [ultimoEstadoOrden,ord]=await Promise.all([Ordenes.Estados_Ordenes.findAll({
+            attributes: [
+              'ordeneId',
+              [sequelize.fn('MAX', sequelize.col('createdAt')), 'lastStateChange'],
+            ],
+            group: ['ordeneId'],
+          }), Ordenes.Ordenes.findAll({include:[{model:Proveedores}]})]);
+    }
+    else{
+        if(res.locals.user.rol=="Repartidor"){
+            [ultimoEstadoOrden,ord]=await Promise.all([Ordenes.Estados_Ordenes.findAll({
+                attributes: [
+                  'ordeneId',
+                  [sequelize.fn('MAX', sequelize.col('createdAt')), 'lastStateChange'],
+                ],
+                group: ['ordeneId'],
+              }), Ordenes.Ordenes.findAll({where:{usuarioCedula:res.locals.user.cedula},include:[{model:Proveedores}]})]);
+        }
+    }
       
     const ordenes=[];
     let a;
@@ -174,7 +188,7 @@ const verOrden=async(req,res)=>{
     ]})
 
     const usuario=await Usuarios.findOne({where:{cedula:orden.usuarioCedula}})
-    console.log(usuario)
+    // console.log(usuario)
 
     const ordenHistorial=await Ordenes.Estados_Ordenes.findAll({where:{ordeneId:id},
     include:[

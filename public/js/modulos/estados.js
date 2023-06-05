@@ -1,5 +1,6 @@
 import axios from "axios";
 const listaOrdenes=document.querySelector('.listado-pendientes');
+const myModal = document.getElementById('myModal')
 
 if(listaOrdenes){
     listaOrdenes.addEventListener('click',e=>{
@@ -7,6 +8,12 @@ if(listaOrdenes){
             if(!e.target.classList.contains('azul')){
                 const padre=e.target.parentElement;
                 const botones=padre.children;
+
+                // console.log(e.target.dataset.estado==1)
+                // if (e.target.dataset.estado==1){
+                    
+                // }
+
                 for(let i=0;i<botones.length;i++){
                     if(botones[i].classList.contains('azul')){
                         botones[i].classList.toggle('azul');
@@ -46,5 +53,8 @@ if(listaOrdenes){
             }
             
         }
+
     })
+
+    
 }

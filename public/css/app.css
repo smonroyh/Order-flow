@@ -616,3 +616,64 @@ scroll-page span{
 .form-crear .acciones a{
     margin: .5rem 0;
 }
+
+.modal-body{
+    display: flex;
+    flex-direction: column;
+
+
+}
+
+.opciones_pago{
+    display: flex;
+    padding-top: 5rem;
+}
+
+
+.pse{
+    height: 3rem;
+    width: 3rem;
+}
+
+.llamada{
+    /* display: block; */
+    height: 3rem;
+    width: 3rem;
+}
+
+.form-check{
+    padding: .5rem 0 .5rem 0;
+}
+
+.detalles{
+    padding-top: 2rem;
+}
+
+.info p:nth-child(1){
+    text-transform: uppercase;
+    font-weight: bold;
+}
+
+.info{
+    font-weight: bold;
+}
+
+.proveedor{
+    text-align: center;
+}
+
+.cliente{
+    text-align: center;
+}
+
+.repartidor{
+    text-align: center;
+}
+
+.productos{
+    text-align: center;
+}
+
+.imgPDF{
+    height: 2rem;
+}
